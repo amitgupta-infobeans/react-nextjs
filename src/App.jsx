@@ -5,6 +5,7 @@ function App() {
   return (
     <>
       <h1>Hi My First Program in React</h1>
+      <p>Thanks for using it..</p>
     </>
   )
 }
