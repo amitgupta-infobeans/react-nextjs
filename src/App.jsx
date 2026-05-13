@@ -2,13 +2,16 @@ import './App.css'
 import Counter from './components/Counter'
 import Home from './components/Home'
 import QueueManagementSystem from './components/QueueSystem'
+import { ThemeProvider } from './components/ThemeContext'
 
 function App() {
 
   return <>
-    <Home />
-    <Counter />
-    <QueueManagementSystem />
+    <ThemeProvider >
+      <Home />
+      <Counter />
+      <QueueManagementSystem />
+    </ThemeProvider>
   </>
 
 }

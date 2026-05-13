@@ -5,9 +5,12 @@ import {
     UserX,
 } from "lucide-react";
 
+import { useTheme } from "./ThemeContext";
+
 const QueueManagementSystem = () => {
     const [customers, setCustomers] = useState([]);
 
+    const { isDark, toggleTheme } = useTheme()
     const [name, setName] = useState("");
     const [service, setService] = useState("");
 
@@ -44,9 +47,11 @@ const QueueManagementSystem = () => {
 
     return (
         <div className="bg-[#0b0b0b] text-white px-6 py-8">
+            <button onClick={() => toggleTheme()} className="text-black bg-amber-50 px-2 py-2">Toggle Title Color</button>
+
             {/* Header */}
             <div className="text-center mb-10">
-                <h1 className="text-5xl font-bold text-indigo-500">
+                <h1 className={`text-5xl font-bold  ${isDark ? "text-indigo-500" : "text-white"} `}>
                     Queue Management System
                 </h1>
                 <p className="text-gray-400 mt-3 text-lg">
@@ -58,7 +63,7 @@ const QueueManagementSystem = () => {
             <div className="flex flex-col lg:flex-row gap-8 max-w-7xl mx-auto">
                 {/* Left Card */}
                 <div className="w-full lg:w-[320px] bg-[#1b1b1b] border-2 rounded-xl p-6 shadow-lg ">
-                    <h2 className="text-3xl font-bold text-indigo-500 mb-6">
+                    <h2 className={`text-3xl font-bold  ${isDark ? "text-indigo-500" : "text-white"}`}>
                         Add to Queue
                     </h2>
 
@@ -107,7 +112,7 @@ const QueueManagementSystem = () => {
                     </h2>
 
                     <div className="space-y-5">
-                        {customers.length== 0 ? "No Customer added!" : customers.map((customer) => (
+                        {customers.length == 0 ? "No Customer added!" : customers.map((customer) => (
                             <div
                                 key={customer.id}
                                 className="bg-[#0f0f0f] rounded-lg p-5 flex items-center justify-between"
@@ -124,8 +129,8 @@ const QueueManagementSystem = () => {
 
                                     <p
                                         className={`mt-2 font-semibold capitalize ${customer.status === "completed"
-                                                ? "text-blue-500"
-                                                : "text-yellow-500"
+                                            ? "text-blue-500"
+                                            : "text-yellow-500"
                                             }`}
                                     >
                                         {customer.status}
